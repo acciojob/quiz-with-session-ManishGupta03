@@ -1,12 +1,12 @@
 //your JS code here.
 // This array will store the user's answers. Initialize it with null values.
-const userAnswers = new Array(questions.length).fill(null);
+const progress = new Array(questions.length).fill(null);
 
 // Function to update userAnswers array when a choice is selected
 function updateAnswer(questionIndex, selectedChoice) {
-  userAnswers[questionIndex] = selectedChoice;
+  progress[questionIndex] = selectedChoice;
   // Save userAnswers to session storage
-  sessionStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  sessionStorage.setItem("progress", JSON.stringify(userAnswers));
 }
 
 // Function to calculate and display the user's score
@@ -20,7 +20,7 @@ function calculateAndDisplayScore() {
   }
 
   // Save the user's score to local storage
-  localStorage.setItem("userScore", score);
+  localStorage.setItem("score", score);
 
   // Display the score on the page
   const scoreElement = document.createElement("div");
@@ -39,7 +39,7 @@ questionsElement.addEventListener("change", (event) => {
 });
 
 // Load userAnswers from session storage, if available
-const storedUserAnswers = sessionStorage.getItem("userAnswers");
+const storedUserAnswers = sessionStorage.getItem("progress");
 if (storedUserAnswers) {
   userAnswers = JSON.parse(storedUserAnswers);
 
